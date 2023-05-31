@@ -5,8 +5,7 @@ import { DefinedRoutes } from "../routes";
 
 const RequireAuth = ({ allowedRoles }) => {
     const { auth } = useAuth();
-    console.log(`auth: ${JSON.stringify(auth)}`);
-    console.log(`auth: ${JSON.stringify(auth.email)}`);
+    console.log(`auth Data: ${JSON.stringify(auth)}`);
     const location = useLocation();
 
     return (

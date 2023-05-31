@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import { DefinedRoutes } from "../routes";
 import Layout from '../components/Layout';
 import RequireAuth from '../components/RequireAuth';
@@ -36,12 +36,18 @@ import AddOrder from './Orders/AddOrder';
 import EditOrder from './Orders/EditOrder';
 import ViewOrder from './Orders/ViewOrder';
 
+// import Branch pages
+import Branches from './Branches/Branches';
+import AddBranch from './Branches/AddBranch';
+import EditBranch from './Branches/EditBranch';
+import ViewBranch from './Branches/ViewBranch';
+
+
 
 import Upgrade from "./Upgrade";
 import DashboardOverview from "./dashboard/DashboardOverview";
 import Transactions from "./Transactions";
 import Settings from "./Settings";
-import BootstrapTables from "./tables/BootstrapTables";
 import Signin from "./Signin";
 import Signup from "./examples/Signup";
 import ForgotPassword from "./examples/ForgotPassword";
@@ -52,13 +58,6 @@ import ServerError from "./examples/ServerError";
 import Unauthorized from "./examples/UnAuthorized";
 
 // documentation pages
-import DocsOverview from "./documentation/DocsOverview";
-import DocsDownload from "./documentation/DocsDownload";
-import DocsQuickStart from "./documentation/DocsQuickStart";
-import DocsLicense from "./documentation/DocsLicense";
-import DocsFolderStructure from "./documentation/DocsFolderStructure";
-import DocsBuild from "./documentation/DocsBuild";
-import DocsChangelog from "./documentation/DocsChangelog";
 
 // components
 import Sidebar from "../components/Sidebar";
@@ -66,22 +65,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
 
-import Accordion from "./components/Accordion";
-import Alerts from "./components/Alerts";
-import Badges from "./components/Badges";
-import Breadcrumbs from "./components/Breadcrumbs";
-import Buttons from "./components/Buttons";
-import Forms from "./components/Forms";
-import Modals from "./components/Modals";
-import Navs from "./components/Navs";
-import Navbars from "./components/Navbars";
-import Pagination from "./components/Pagination";
-import Popovers from "./components/Popovers";
-import Progress from "./components/Progress";
-// import Tables from "./components/Tables";
-import Tabs from "./components/Tabs";
-import Tooltips from "./components/Tooltips";
-import Toasts from "./components/Toasts";
+
 
 const ROLES = {
   "Owner": 1,
@@ -181,6 +165,13 @@ export default () => (
           <Route path={DefinedRoutes.AddEmployee.path} element={<RouteWithSidebar><AddEmployee /></RouteWithSidebar>} />
           <Route path={DefinedRoutes.EditEmployee.path} element={<RouteWithSidebar><EditEmployee /></RouteWithSidebar>} />
           <Route path={DefinedRoutes.ViewEmployee.path} element={<RouteWithSidebar><ViewEmployee /></RouteWithSidebar>} />
+
+          {/* Branch Routes */}
+          <Route path={DefinedRoutes.Branches.path} element={<RouteWithSidebar><Branches /></RouteWithSidebar>} />
+          <Route path={DefinedRoutes.AddBranch.path} element={<RouteWithSidebar><AddBranch /></RouteWithSidebar>} />
+          <Route path={DefinedRoutes.EditBranch.path} element={<RouteWithSidebar><EditBranch /></RouteWithSidebar>} />
+          <Route path={DefinedRoutes.ViewBranch.path} element={<RouteWithSidebar><ViewBranch /></RouteWithSidebar>} />
+        
         </Route>
 
         {/* Order Routes */}
@@ -206,35 +197,6 @@ export default () => (
       <Route path={DefinedRoutes.Upgrade.path} element={<RouteWithSidebar><Upgrade /></RouteWithSidebar>} />
       <Route path={DefinedRoutes.Transactions.path} element={<RouteWithSidebar><Transactions /></RouteWithSidebar>} />
       <Route path={DefinedRoutes.Settings.path} element={<RouteWithSidebar><Settings /></RouteWithSidebar>} />
-      {/* components */}
-      {/* <RouteWithSidebar  path={DefinedRoutes.Accordions.path} element={Accordion} />
-        <RouteWithSidebar  path={DefinedRoutes.Alerts.path} element={Alerts} />
-        <RouteWithSidebar  path={DefinedRoutes.Badges.path} element={Badges} />
-        <RouteWithSidebar  path={DefinedRoutes.Breadcrumbs.path} element={Breadcrumbs} />
-        <RouteWithSidebar  path={DefinedRoutes.Buttons.path} element={Buttons} />
-        <RouteWithSidebar  path={DefinedRoutes.Forms.path} element={Forms} />
-        <RouteWithSidebar  path={DefinedRoutes.Modals.path} element={Modals} />
-        <RouteWithSidebar  path={DefinedRoutes.Navs.path} element={Navs} />
-        <RouteWithSidebar  path={DefinedRoutes.Navbars.path} element={Navbars} />
-        <RouteWithSidebar  path={DefinedRoutes.Pagination.path} element={Pagination} />
-        <RouteWithSidebar  path={DefinedRoutes.Popovers.path} element={Popovers} />
-        <RouteWithSidebar  path={DefinedRoutes.Progress.path} element={Progress} />
-        <RouteWithSidebar  path={DefinedRoutes.Tables.path} element={Tables} />
-        <RouteWithSidebar  path={DefinedRoutes.Tabs.path} element={Tabs} />
-        <RouteWithSidebar  path={DefinedRoutes.Tooltips.path} element={Tooltips} />
-        <RouteWithSidebar  path={DefinedRoutes.Toasts.path} element={Toasts} /> */}
-
-      {/* documentation */}
-      {/* <RouteWithSidebar  path={DefinedRoutes.DocsOverview.path} element={DocsOverview} />
-        <RouteWithSidebar  path={DefinedRoutes.DocsDownload.path} element={DocsDownload} />
-        <RouteWithSidebar  path={DefinedRoutes.DocsQuickStart.path} element={DocsQuickStart} />
-        <RouteWithSidebar  path={DefinedRoutes.DocsLicense.path} element={DocsLicense} />
-        <RouteWithSidebar  path={DefinedRoutes.DocsFolderStructure.path} element={DocsFolderStructure} />
-        <RouteWithSidebar  path={DefinedRoutes.DocsBuild.path} element={DocsBuild} />
-        <RouteWithSidebar  path={DefinedRoutes.DocsChangelog.path} element={DocsChangelog} /> */}
-
-      {/* <Navigate to={DefinedRoutes.NotFound.path} /> */}
-      {/* catch all */}
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>
